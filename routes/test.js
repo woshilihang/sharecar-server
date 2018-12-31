@@ -29,4 +29,8 @@ router.get('/getHasCar', Cars.getHasCar)
 // 获取无车拼单信息
 router.get('/getNoCar', Cars.getNoCar)
 
+router.get('/test', (ctx) => {
+  ctx.body = 'hello test'
+})
+
 module.exports = router

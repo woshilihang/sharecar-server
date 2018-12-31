@@ -110,9 +110,7 @@ class CarController {
   static async getHasCar(ctx) {
     // let req = ctx.request.query
     // console.log(req)
-
-    let hasCar = "true"
-    const HasCar = await CarsModel.getHasCar({"hasCar": hasCar})
+    const HasCar = await CarsModel.getHasCar({"hasCar": true})
     console.log(HasCar)
     ctx.status = 200
     ctx.body = {
@@ -125,8 +123,7 @@ class CarController {
   // 无车拼单
   static async getNoCar(ctx) {
     // let req = ctx.request.params
-    let hasCar = false
-    const NoCar = await CarsModel.getNoCar({"hasCar": hasCar})
+    const NoCar = await CarsModel.getNoCar({"hasCar": false})
     ctx.status = 200
     ctx.body = {
       data: NoCar,

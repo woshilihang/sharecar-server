@@ -27,10 +27,10 @@ const CarSchema = new Schema({
     type: Number,
     default: 0
   },
-  peopleNum:{ // 同行人数   此项为无车拼单选填项
+  peopleNum: { // 同行人数   此项为无车拼单选填项
     type: Number,
     default: 0
-  }, 
+  },
   remarks: String,
   // 此处记录填写拼车的用户信息
   username: {
@@ -45,7 +45,7 @@ const CarSchema = new Schema({
     type: Number,
     required: true
   },
-  wxNumber: {
+  wx: {
     type: String,
     required: false
   },
@@ -53,6 +53,20 @@ const CarSchema = new Schema({
     type: Boolean,
     required: true,
     default: true
+  },
+  createTime: {
+    type: Date,
+    default: Date.now
+  },
+  updateTime: {
+    type: Date,
+    default: Date.now
+  }
+}, {
+  versionKey: false,
+  timestamps: {
+    createdAt: 'createTime',
+    updatedAt: 'updateTime'
   }
 })
 

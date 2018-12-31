@@ -44,7 +44,12 @@ class CarsModel {
 
   // 获取所有拼车单信息
   static async getAllCar() {
-    return await Cars.find((err, doc) => {
+    return await Cars.find({}, null, {
+      limit: 5,
+      sort: {
+        createTime: 1
+      }
+    }, (err, doc) => {
       if (err) {
         console.log('获取全部拼车信息错误', err)
       } else {
@@ -61,16 +66,14 @@ class CarsModel {
   static async getHasCar(args) {
     // 拿到参数进行判断是否为有车拼单
     let hasCar = args.hasCar // 拿到是否为有车拼单
-    // console.log(hasCar)
     if (hasCar) {
-      // console.log('getHasCar')
       return await Cars.find({
-        "outset": "南昌"
+        "hasCar": hasCar
       }, (err, res) => {
         if (err) {
           console.log(err)
         } else {
-          // console.log(res)
+
           return res
         }
       })
